@@ -1,7 +1,7 @@
 'use strict';
 var analyserFrequency = require('analyser-frequency-average');
 
-module.exports = function(audioContext, stream, opts) {
+module.exports = function(audioContext, audioElement, opts) {
 
   opts = opts || {};
 
@@ -41,7 +41,7 @@ module.exports = function(audioContext, stream, opts) {
   var vadState = false;
   var captureTimeout = null;
 
-  var source = audioContext.createMediaStreamSource(stream);
+  var source = audioContext.createMediaElementSource(audioElement);
   var analyser = audioContext.createAnalyser();
   analyser.smoothingTimeConstant = options.smoothingTimeConstant;
   analyser.fftSize = options.fftSize;
